@@ -2,17 +2,13 @@
 
 
 SoftwareSerial mySerial = SoftwareSerial(2, 3);
-int fadePin = 9; 
-int fadeRate = 0;
 
 
 void setup() {
   pinMode(13, OUTPUT);
   Serial.begin(115200);
-  //Serial.println("Goodnight moon!");
   // set the data rate for the SoftwareSerial port
   mySerial.begin(115200);
-  mySerial.println("Hello, world?");
 }
 
 
