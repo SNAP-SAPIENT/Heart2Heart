@@ -1,0 +1,12 @@
+{
+  "name": "Heart2Heart",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "angular-hammer": "^2.1.10",
+    "jquery": "^2.1.3"
+  },
+  "devDependencies": {
+    "grunt-steroids": "1.x"
+  }
+}
