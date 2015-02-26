@@ -44,7 +44,7 @@ volatile int IBI = 600;             // holds the time between beats, must be see
 volatile boolean Pulse = false;     // true when pulse wave is high, false when it's low
 volatile boolean QS = false;        // becomes true when Arduoino finds a beat.
 
-SoftwareSerial mySerial = SoftwareSerial(2, 3); //Rx , Tx
+SoftwareSerial mySerial = SoftwareSerial(2, 3); //Tx , Rx
 
 void setup() {
   pinMode(blinkPin, OUTPUT);        // pin that will blink to your heartbeat!
@@ -74,10 +74,3 @@ void loop() {
 
   delay(20);                             //  take a break
 }
-
-
-
-
-
-
-
