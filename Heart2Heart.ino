@@ -60,13 +60,6 @@ void setup() {
 
 
 void loop() {
-  //  sendDataToProcessing('S', Signal);     // send Processing the raw Pulse Sensor data
-  //  if (QS == true){                       // Quantified Self flag is true when arduino finds a heartbeat
-  //        fadeRate = 255;                  // Set 'fadeRate' Variable to 255 to fade LED with pulse
-  //        sendDataToProcessing('B',BPM);   // send heart rate with a 'B' prefix
-  //        sendDataToProcessing('Q',IBI);   // send time between beats with a 'Q' prefix
-  //        QS = false;                      // reset the Quantified Self flag for next time
-  //     }
 
   int inByte;
   if (mySerial.available()) {
@@ -79,16 +72,7 @@ void loop() {
     }
   }
 
-  ledFadeToBeat();
-
-  delay(100);                             //  take a break
-}
-
-
-void ledFadeToBeat() {
-  fadeRate -= 15;                         //  set LED fade value
-  fadeRate = constrain(fadeRate, 0, 255); //  keep LED fade value from going into negative numbers!
-  analogWrite(fadePin, fadeRate);         //  fade LED
+  delay(20);                             //  take a break
 }
 
 
