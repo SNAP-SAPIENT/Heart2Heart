@@ -5,12 +5,12 @@ angular
 
     //DOM Stuff
     $scope.heart = document.getElementById("heart");
-    $scope.hiddenBtns = jQuery("#hidden-btns li");
+    $scope.hiddenBtns = jQuery("#hidden-btns div");
+    $scope.offlineBtn = jQuery("#offline");
 
     //Event Listeners
     $scope.heart.addEventListener("touchstart", startBeat, false);
     $scope.heart.addEventListener("touchend", stopBeat, false);
-    //$scope.hiddenBtns.addEventListener("touchstart",toggleMode, false);
     jQuery($scope.hiddenBtns).click(function( e ) {
       toggleMode(e.currentTarget);// true
     });
@@ -37,10 +37,12 @@ angular
     function startBeat(){
         if($scope.mode == "green"){
             $scope.timer = setInterval(function(){navigator.notification.vibrate(2500);},600);  
+            normalMode();
         }else if($scope.mode == "red"){
             $scope.timer = setInterval(function(){navigator.notification.vibrate(2500);},500); 
+            fitnessMode();
         }else{
-            window.clearInterval($scope.timer);
+            $scope.mode == "green";
         }
     }
 
@@ -50,39 +52,33 @@ angular
     }
 
     function defaultMode(){
-        $scope.mode = "green";
-        jQuery("body").css("background-color","#FFFFFF");
         jQuery("#heart").attr("src","http://cl.ly/image/1Y0N0B1b0h3A/Default.jpg");
-        jQuery("#offline").css("display","block");
+        jQuery("#activity").css("visibility","hidden");
+        jQuery("body").css("background-color","#FFFFFF");
     }
 
     function normalMode(){
-        
+        jQuery("#heart").attr("src","http://cl.ly/image/0B39263I0R0Y/Green_Heart.gif");
+        jQuery("body").css("background-color","#92d5a9");
+        jQuery("#offline").css("visibility","hidden");
+        jQuery("#activity").css("visibility","visible");
     }
 
     function fitnessMode(){
-
+        jQuery("#heart").attr("src","http://cl.ly/image/3h341s1I121O/Red_Heart.gif");
+        jQuery("body").css("background-color","#d5797a");
+        jQuery("#offline").css("visibility","hidden");
+        jQuery("#activity").css("visibility","visible");
     }
 
     function toggleMode(el){
-
         if(jQuery(el).attr('id') == "green"){
             $scope.mode = "green";
-            jQuery("body").css("background-color","#92d5a9");
-            jQuery("#heart").attr("src","http://cl.ly/image/0B39263I0R0Y/Green_Heart.gif");
-
+            
         }else if(jQuery(el).attr('id') == "red"){
             $scope.mode = "red";
-            jQuery("body").css("background-color","#d5797a");
-            jQuery("#heart").attr("src","http://cl.ly/image/3h341s1I121O/Red_Heart.gif");
-            jQuery("#activity").css("display","block");
-        }else{
-            $scope.mode = "offline";
-            jQuery("body").css("background-color","#d5797a");
-            jQuery("#heart").attr("src","http://cl.ly/image/3h341s1I121O/Red_Heart.gif");
-            jQuery("#offline").css("display","block");
+        }else if(jQuery(el).attr('id') == "offline"){
+            navigator.notification.vibrate(2500);
         }
     }
-
-
   });

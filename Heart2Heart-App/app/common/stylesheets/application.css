@@ -19,7 +19,7 @@ body{
 }
 
 #offline{
-	display: block;
+	visibility: hidden;
 }
 
 
@@ -32,11 +32,11 @@ body{
 	margin-top: 30px;
 }
 
-#hidden-btns li{
-	float: left;
-	width: 130px;
+#hidden-btns div{
+	float: left; 
+	width: 80px;
 	height: 90px;
 	border: #e5e5e5 solid 1px;
-	text-decoration: none;
-	margin: 0 25px;
+	/*margin: 0 10px;*/
+	display: block;
 }
