@@ -6,7 +6,6 @@ angular
     //DOM Stuff
     $scope.heart = document.getElementById("heart");
     $scope.hiddenBtns = jQuery("#hidden-btns div");
-    $scope.offlineBtn = jQuery("#offline");
 
     //Event Listeners
     $scope.heart.addEventListener("touchstart", startBeat, false);
@@ -53,22 +52,26 @@ angular
 
     function defaultMode(){
         jQuery("#heart").attr("src","http://cl.ly/image/1Y0N0B1b0h3A/Default.jpg");
-        jQuery("#activity").css("visibility","hidden");
+        jQuery("#activity-notif").css("visibility","hidden");
         jQuery("body").css("background-color","#FFFFFF");
+        jQuery("#hidden-btns div").css("border","#f8f8f8");
     }
 
     function normalMode(){
         jQuery("#heart").attr("src","http://cl.ly/image/0B39263I0R0Y/Green_Heart.gif");
         jQuery("body").css("background-color","#92d5a9");
-        jQuery("#offline").css("visibility","hidden");
-        jQuery("#activity").css("visibility","visible");
+        jQuery("#offline-notif").css("visibility","hidden");
+        jQuery("#activity-notif").css("visibility","hidden");
+        jQuery("#hidden-btns div").css("border","#92d5a9");
     }
 
     function fitnessMode(){
         jQuery("#heart").attr("src","http://cl.ly/image/3h341s1I121O/Red_Heart.gif");
         jQuery("body").css("background-color","#d5797a");
-        jQuery("#offline").css("visibility","hidden");
-        jQuery("#activity").css("visibility","visible");
+        jQuery("#offline-notif").css("visibility","hidden");
+        jQuery("#activity-notif").css("visibility","visible");
+        jQuery("#hidden-btns div").css("border","#d5797a");
+
     }
 
     function toggleMode(el){
@@ -78,7 +81,8 @@ angular
         }else if(jQuery(el).attr('id') == "red"){
             $scope.mode = "red";
         }else if(jQuery(el).attr('id') == "offline"){
-            navigator.notification.vibrate(2500);
+            jQuery("#offline-notif").css("visibility","visible");
         }
     }
+
   });

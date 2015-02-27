@@ -11,17 +11,18 @@ body{
 .status{
 	width: 50px;
 	height: 50px;
-	display: none;
-}
-
-.status-icons{
-	margin: 10px;
-}
-
-#offline-notif{
 	visibility: hidden;
+	margin-top: 20px;
 }
 
+#status-icons{
+	position: relative;
+}
+
+#status-icons .status{
+	position: absolute;
+	left: 15px;
+}
 
 #heart{
 	margin-top: 100px;
@@ -29,14 +30,14 @@ body{
 }
 
 #hidden-btns{
-	margin-top: 30px;
+	margin-top: 70px;
 }
 
 #hidden-btns div{
 	float: left; 
-	width: 80px;
+	width: 100px;
 	height: 90px;
-	border: #e5e5e5 solid 1px;
-	margin: 0 10px;
+	border: #FFFFFF solid 1px;
+	margin: 0 12px;
 	display: block;
 }
