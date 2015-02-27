@@ -17,9 +17,22 @@ angular
 
     //variables/defaults
     $scope.timer; //For beat 1
-    $scope.mode = "offline";
+    $scope.mode = "green"; //Behind the scenes mode
 
     document.addEventListener('touchmove', function(e) { e.preventDefault(); }, false);
+
+    //Preload images
+    preload([
+        'http://cl.ly/image/0P052W1i3i2D/H2H_Activity_Mode.png',
+        'http://cl.ly/image/3h341s1I121O/Red_Heart.gif',
+        'http://cl.ly/image/0B39263I0R0Y/Green_Heart.gif'
+    ]);
+
+    function preload(arrayOfImages) {
+        $(arrayOfImages).each(function(){
+            $('<img/>')[0].src = this;
+        });
+    }
 
     function startBeat(){
         if($scope.mode == "green"){
@@ -32,8 +45,23 @@ angular
     }
 
     function stopBeat(){
-    	window.clearInterval($scope.timer);
-        $scope.mode ="offline"
+        window.clearInterval($scope.timer);
+        defaultMode();
+    }
+
+    function defaultMode(){
+        $scope.mode = "green";
+        jQuery("body").css("background-color","#FFFFFF");
+        jQuery("#heart").attr("src","http://cl.ly/image/1Y0N0B1b0h3A/Default.jpg");
+        jQuery("#offline").css("display","block");
+    }
+
+    function normalMode(){
+        
+    }
+
+    function fitnessMode(){
+
     }
 
     function toggleMode(el){
