@@ -2,41 +2,42 @@ angular
   .module('mainPage')
   .controller('IndexController', function($scope, supersonic) {
     // Controller functionality here
+
+    //DOM Stuff
     $scope.heartTouch = document.getElementById("inv-btn");
     $scope.heart = document.getElementById("heart");
-    $scope.heartImgs = ["http://cl.ly/image/2B3y2e2X1G0o/Embossed_Heart_Low.png","http://cl.ly/image/1V0N1E1A3108/Embossed_Heart_Medium.png","http://cl.ly/image/2E1U153P051r/Embossed_Heart_High.png"];
-    $scope.hiddenBtns = $("#hidden-btns li");//document.getElementsByClassName("hidden-btns");
+    $scope.hiddenBtns = jQuery("#hidden-btns li");
+
+    //Event Listeners
     $scope.heartTouch.addEventListener("touchstart", startBeat, false);
     $scope.heartTouch.addEventListener("touchend", stopBeat, false);
     //$scope.hiddenBtns.addEventListener("touchstart",toggleMode, false);
     jQuery($scope.hiddenBtns).click(function( e ) {
-      toggleMode();// true
+      toggleMode(e.currentTarget);// true
     });
+
+    //variables
     $scope.timer; //For beat 1
-    $scope.mode = 0; //0 = low(blue) 1 = average(green)  2 = fast (red)
 
     document.addEventListener('touchmove', function(e) { e.preventDefault(); }, false);
 
-    function startBeat(){ 
-        $scope.timer = setInterval(function(){navigator.notification.vibrate(2500); startAnimation();},800);
-    }
-
-    function startAnimation(){
-        jQuery($scope.heart).attr("src",$scope.heartImgs[0]);
-        setTimeout(function(){
-            jQuery($scope.heart).attr("src",$scope.heartImgs[1]);
-        },400);
-        setTimeout(function(){
-            jQuery($scope.heart).attr("src",$scope.heartImgs[2]);
-        },400);
+    function startBeat(){
+        $scope.timer = setInterval(function(){navigator.notification.vibrate(2500);},800);
     }
 
     function stopBeat(){
-        jQuery($scope.heart).attr("src",$scope.heartImgs[0]);
     	window.clearInterval($scope.timer);
     }
 
-    function toggleMode(){
-        navigator.notification.vibrate(2500);
+    function toggleMode(el){
+        if(jQuery(el).attr('id') == "green"){
+            jQuery("body").css("background-color","#92d5a9");
+            jQuery("#heart").attr("src","http://cl.ly/image/0B39263I0R0Y/Green_Heart.gif");
+        }else if(jQuery(el).attr('id') == "red"){
+            jQuery("body").css("background-color","#d5797a");
+            jQuery("#heart").attr("src","http://cl.ly/image/3h341s1I121O/Red_Heart.gif");
+        }
     }
+
+
   });
