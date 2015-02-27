@@ -22,5 +22,3 @@ module.exports =
   statusBar:
     enabled: true
     style: "default"
-
-  steroids.config.statusBar.enabled = true

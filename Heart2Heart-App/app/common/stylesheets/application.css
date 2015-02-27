@@ -19,22 +19,28 @@ html,body{
 }
 
 #inv-btn{
-	width: 240px;
-	height: 220px;
+	width: 350px;
+	height: 350px;
 	background: rgba(255,255,255,0);
 	position: fixed;
-	top: 160px;
-	left: 75px;
+	top: 120px;
+	left: 10px;
 }
 
 #heart{
-	position: relative;
-	left: 0px;
-	top: -340px;
+	margin-top: 100px;
+	margin-left: 5px;
 }
 
-#heart-beat{
-	position:relative;
-	top: 50px;
-	left: -27px;
+#hidden-btns{
+	margin-top: 70px;
+}
+
+#hidden-btns li{
+	float: left;
+	width: 70px;
+	height: 70px;
+	border: black solid 1px;
+	text-decoration: none;
+	margin: 0 25px;
 }
