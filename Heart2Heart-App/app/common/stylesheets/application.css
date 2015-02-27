@@ -5,17 +5,23 @@
 }
 
 body{
-	background-color: #92d5a9;
+	background-color: #FFFFFF;
 }
 
-#inv-btn{
-	width: 350px;
-	height: 350px;
-	background: rgba(0,0,0,0);
-	position: fixed;
-	top: 120px;
-	left: 10px;
+.status{
+	width: 50px;
+	height: 50px;
+	display: none;
 }
+
+.status-icons{
+	margin: 10px;
+}
+
+#offline{
+	display: block;
+}
+
 
 #heart{
 	margin-top: 100px;
